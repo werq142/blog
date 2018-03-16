@@ -22,6 +22,12 @@
        @include ('layouts.nav')
     </header>
 
+    @if ($flash = session("message"))
+    <div id="flash-message" class="alert alert-success" role="alert">
+        {{ $flash }}
+    </div>
+    @endif
+
     <main role="main">
       	<div class="container">
           <div class="blog-header">
@@ -37,4 +43,5 @@
 
     @include ('layouts.footer')
 
-    </body></html>
+    </body>
+</html>
