@@ -13,7 +13,13 @@ class RegistrationController extends Controller
     }
     public function store(RegistrationForm $form)
     {
-        $form->persist();
+        //$form->persist();
+        $user = \App\User::create([
+            'name' => request('name'),
+            'email' => request('email'),
+            'password' => bcrypt(request('password'))
+        ]);
+        auth()->login($user);
         session()->flash('message', 'Signed up');
         return redirect()->home();
     }
