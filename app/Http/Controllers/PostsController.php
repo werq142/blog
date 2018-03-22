@@ -6,7 +6,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Post;
-
+use App\Tag;
 use App\Repositories\Posts;
 
 use Carbon\Carbon;
@@ -41,9 +41,16 @@ class PostsController extends Controller
     		'title' => 'required',
     		'body' => 'required'
     	]);
-    	auth()->user()->publish(
-    	    new Post (request(['title', 'body']))
-        );
+        $post = Post::create([
+            'user_id' => auth()->user()->id,
+            'title' => request('title'),
+            'body' => request('body')
+        ]);
+    	$post_id = $post->id;
+        Tag::create([
+            'name' => request('tags'),
+            'post_id' => $post_id
+        ]);
         session()->flash(
             'message', "Your post has now been published."
         );

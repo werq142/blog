@@ -8,6 +8,16 @@
 
 	<form method="POST" action="/posts">
 		{{ csrf_field() }}
+		<div class="form-group">
+		@foreach ($tags as $tag)
+				<span class="checkbox">{{ $tag->name }}</span>
+		@endforeach
+		</div>
+		<div class="form-group">
+			<label for="tags">Tags:</label>
+			<input type="text" class="form-control" id="tags" name="tags">
+		</div>
+		<hr>
 
 	  <div class="form-group">
 	    <label for="title">Title:</label>
@@ -26,6 +36,14 @@
 	  @include ('layouts.errors')
 
 	</form>
+
+	<script>
+	$('.checkbox').on('click', function()
+	{
+	    $val = $('#tags').val() + ' ' + $(this).text();
+	    $('#tags').val($val);
+	});
+	</script>
 
 </div>
 @endsection

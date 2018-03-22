@@ -15,15 +15,18 @@ class CreateTagsTable extends Migration
     {
         Schema::create('tags', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name')->unique();
+            $table->string('name');
+            $table->unsignedInteger('post_id');
             $table->timestamps();
+
+            $table->foreign('post_id')->references('id')->on('posts');
         });
 
-        Schema::create('post_tag', function (Blueprint $table) {
-            $table->integer('post_id');
-            $table->integer('tag_id');
-            $table->primary(['post_id', 'tag_id']);
-        });
+        //Schema::create('post_tag', function (Blueprint $table) {
+         //   $table->integer('post_id');
+          //  $table->integer('tag_id');
+           // $table->primary(['post_id', 'tag_id']);
+        //});
     }
 
     /**

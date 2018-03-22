@@ -14,6 +14,7 @@
 </head>
     <!-- Custom styles for this template -->
     <link href="/css/app.css" rel="stylesheet">
+<script src="{{asset('js/jquery.min.js')}}"></script>
   </head>
 
   <body>

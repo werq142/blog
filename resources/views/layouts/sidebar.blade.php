@@ -16,16 +16,16 @@
             </ol>
           </div>
 
-          <div class="sidebar-module">
+          <!--<div class="sidebar-module">
               <h4>Tags</h4>
               <ol class="list-unstyled">
-                  @foreach ($tags as $tag)
+                  foreach ($tags as $tag)
                       <li>
-                          <a  href="/posts/tags/{{ $tag }}">
-                              {{ $tag }}
+                          <a  href="/posts/tags/{ $tag }}">
+                              { $tag }}
                           </a>
                       </li>
-                  @endforeach
+                  endforeach
               </ol>
-          </div>
+          </div>-->
 </div>
